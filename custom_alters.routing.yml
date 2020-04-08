@@ -3,7 +3,7 @@ custom_alters.show_content_as_json:
   defaults:
     _controller: 'Drupal\custom_alters\Controller\ContentDisplayController::content'
     _title: 'JSON Output'
-  # Parameters expected in the URL.ssh-add -l
+  # Parameters expected in the URL.
   options:
     parameters:
       api_key:
