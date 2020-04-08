@@ -20,5 +20,8 @@ http://localhost/page_json/FOOBAR12345/17
 - https://codeburst.io/how-to-send-the-json-data-from-a-drupal-8-site-c2ca2ae2de89 (Send JSON Data with Controller)
 - https://www.drupal.org/docs/8/api/configuration-api/configuration-schemametadata
 
+## Total Time
+- It took me approximately 3 hours to build this module.
+
 ## Note:
 When you clone this module, just rename it to custom_alters, before enabling it.
