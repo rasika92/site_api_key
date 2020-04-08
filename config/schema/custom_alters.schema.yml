@@ -1,0 +1,7 @@
+# We are adding new field to the system.site configuration
+system.site:
+  mapping:
+    # New field details.
+    siteapikey:
+      type: label
+      label: 'Site API Key'

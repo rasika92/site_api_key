@@ -1,0 +1,14 @@
+custom_alters.show_content_as_json:
+  path: '/page_json/{api_key}/{node}'
+  defaults:
+    _controller: 'Drupal\custom_alters\Controller\ContentDisplayController::content'
+    _title: 'JSON Output'
+  # Parameters expected in the URL.ssh-add -l
+  options:
+    parameters:
+      api_key:
+        type: string
+      nid:
+        type: entity:node
+  requirements:
+    _permission: 'access content'

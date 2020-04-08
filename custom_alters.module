@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * Contains Site API Key storing alters.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function custom_alters_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id === 'system_site_information_settings') {
+    // Get the API key from the saved config.
+    $api_key = \Drupal::config('system.site')->get('siteapikey');
+    // If API Key is not saved, set placeholder text.
+    $value = $api_key ? $api_key : t('No API Key yet');
+    $form['site_information']['site_apikey'] = [
+      '#type' => 'textfield',
+      '#title' => t('Site API Key'),
+      '#default_value' => $value,
+      '#description' => t('Add your API Key here.'),
+    ];
+    // Change form submit button text to 'Update Configuration'.
+    $form['actions']['submit']['#value'] = t('Update Configuration');
+
+    // Added custom submit handler.
+    $form['#submit'][] = 'custom_alters_site_information_settings_submit';
+  }
+}
+
+/**
+ * Custom submit handler to set API Key in config.
+ */
+function custom_alters_site_information_settings_submit(&$form, FormStateInterface $form_state) {
+  // Get the api key value saved to the field.
+  $old_apikey = $form['site_information']['site_apikey']['#default_value'];
+  // Get the api key value which is to be updated to.
+  $api_key = $form_state->getValue('site_apikey');
+  // Get the config and update the api key in the config.
+  $config = \Drupal::service('config.factory')->getEditable('system.site');
+  $config
+    ->set('siteapikey', $api_key)
+    ->save();
+  // If the API Key is updated to new one, show specific success message.
+  if ($old_apikey !== $api_key) {
+    \Drupal::messenger()->addStatus(t('The site API Key has been saved with the value <em>@api_key</em>', ['@api_key' => $api_key]));
+  }
+}

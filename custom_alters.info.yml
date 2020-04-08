@@ -1,0 +1,5 @@
+name: 'Custom Alters'
+type: module
+description: 'Helper module used for making site alterations.'
+core: 8.x
+package: 'Custom'
