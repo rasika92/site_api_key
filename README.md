@@ -19,3 +19,6 @@ http://localhost/page_json/FOOBAR12345/17
 - https://www.drupal.org/docs/8/api/routing-system/parameters-in-routes/using-parameters-in-routes
 - https://codeburst.io/how-to-send-the-json-data-from-a-drupal-8-site-c2ca2ae2de89 (Send JSON Data with Controller)
 - https://www.drupal.org/docs/8/api/configuration-api/configuration-schemametadata
+
+## Note:
+When you clone this module, just rename it to custom_alters, before enabling it.
